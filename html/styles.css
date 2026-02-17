@@ -1,0 +1,590 @@
+body {
+  background: #001840;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+#cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0; /* above bg, below content */
+  background: #314364;
+  transform: translate(-50%, -50%);
+  filter: blur(150px);
+}
+
+p,
+a,
+h2,
+h1,
+h3,
+span,
+div {
+  color: white;
+  text-decoration: none;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.header {
+  height: 100px;
+  animation: hero-fade 0.8s ease forwards;
+  animation-delay: 0.2s; /* float starts after fade */
+  opacity: 0; /* initial state for fade */
+}
+
+.header .content {
+  max-width: 1300px;
+  display: flex;
+  justify-self: center;
+  width: 100%;
+}
+
+.header .inside {
+  padding: 2rem;
+}
+
+.header .logo {
+  height: 100px;
+  z-index: 999;
+}
+
+.main .content {
+  display: flex;
+  justify-self: center;
+  width: 100%;
+}
+.main {
+  width: 100vw;
+  position: relative;
+  top: -100px;
+}
+.hero {
+  width: 100vw;
+  height: 100vh;
+}
+
+.hero img {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  /* TWO animations combined */
+  animation: hero-fade 0.8s ease forwards,
+    /* fade in */ hero-float 8s ease-in-out infinite; /* floating motion */
+  animation-delay: 0.4s, 0.8s; /* float starts after fade */
+  opacity: 0; /* initial state for fade */
+}
+
+/* Fade in once and stay visible */
+@keyframes hero-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Subtle floating with more sideways motion */
+@keyframes hero-float {
+  0% {
+  }
+  20% {
+    opacity: 0.9;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+  }
+}
+
+/* Wrapper must be centered on page */
+.typing-wrapper {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically */
+  height: 100vh; /* full viewport height */
+  width: 100vw;
+  animation: hero-fade 0.8s ease forwards;
+  animation-delay: 0.8s; /* float starts after fade */
+  opacity: 0; /* initial state for fade */
+}
+
+/* Typing header */
+#typing-header {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  /* animation: float 6s ease-in-out infinite; */
+
+  /* center the container but typing starts from left */
+  display: inline-flex; /* shrink to fit content */
+  flex-direction: column; /* for stacked spans if needed */
+  line-height: 80px;
+  text-align: center; /* IMPORTANT: typing starts from left */
+  width: 400px;
+  height: 300px;
+}
+
+/* Highlighted word */
+#typing-header .highlight {
+  font-family: "Playfair Display", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 82px;
+  padding-bottom: 10px;
+}
+
+/* Non-highlight italic word */
+#typing-header .noHighlight {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 82px;
+}
+
+/* Regular word */
+#typing-header .regular {
+  font-style: normal;
+  padding: 0;
+  margin: 0;
+  font-size: 62px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  20% {
+    transform: translate(8px, -5px);
+  }
+  40% {
+    transform: translate(-6px, 7px);
+  }
+  60% {
+    transform: translate(5px, -8px);
+  }
+  80% {
+    transform: translate(-7px, 6px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+.inside {
+  max-width: 1100px;
+  width: 90%;
+  margin: auto;
+}
+
+.maincontent {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.line {
+  position: absolute;
+  top: 95vh;
+  left: 0;
+  animation: hero-fade 0.8s ease forwards;
+  animation-delay: 0.9s; /* float starts after fade */
+  opacity: 0; /* initial state for fade */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
+}
+
+.heroUnderlineLeft,
+.heroUnderlineRight {
+  max-width: 40vw;
+  width: 45vw;
+  height: 3px;
+  background: white;
+  display: block;
+}
+
+.line a {
+  text-decoration: none;
+  color: white;
+  font-weight: 200;
+  font-size: 16px;
+}
+
+.heroMore {
+  position: relative;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  bottom: 12rem;
+  padding: 0 8rem;
+  animation: hero-fade 0.8s ease forwards;
+  animation-delay: 1s; /* float starts after fade */
+  opacity: 0; /* initial state for fade */
+}
+.links .left button {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 26px;
+  position: relative;
+  cursor: pointer;
+}
+
+.links .left button::after {
+  content: "";
+  width: 0%;
+  height: 3px;
+  background: white;
+  position: relative;
+  display: block;
+  top: 2px;
+  margin: 0 auto; /* centers the pseudo-element */
+  transition: width 0.4s ease;
+}
+
+.links .left button:hover::after {
+  width: 100%;
+}
+
+.tagline {
+  font-size: 16px;
+  font-weight: 200;
+  position: relative;
+  bottom: 0rem;
+  animation: hero-fade 0.8s ease forwards;
+  animation-delay: 0.9s; /* float starts after fade */
+  opacity: 0; /* initial state for fade */
+}
+
+.contact-form {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: sans-serif;
+}
+
+.field {
+  position: relative;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 14px 12px;
+  background: none;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+.field label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  padding: 0 4px;
+  color: #777;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+/* FLOATING LABEL LOGIC */
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+  top: -6px;
+  font-size: 12px;
+  color: white;
+}
+
+.textarea label {
+  top: 20px;
+}
+
+button {
+  padding: 12px;
+  background: transparent;
+  color: white;
+  border: solid 2px white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.offers {
+  padding-top: 5rem;
+}
+
+.offers h2 {
+  font-size: 52px;
+  font-weight: 600;
+  padding-bottom: 2rem;
+}
+
+.offersInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.offersInfo button {
+  border: none;
+  padding: none;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .offersInfo {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 5rem;
+  }
+  .offersInfo p {
+    width: 70%;
+  }
+}
+
+.buttonToLeft {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.buttonToLeft::after {
+  content: "";
+  width: 0%;
+  height: 3px;
+  background: white;
+  position: absolute;
+  display: block;
+  bottom: -2px;
+  right: 0;
+  transition: width 0.4s ease;
+}
+
+.buttonToLeft:hover::after {
+  width: 100%;
+}
+
+.values {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5rem;
+  padding-bottom: 8rem;
+}
+
+.values h2 {
+  font-size: 62px;
+  text-align: center;
+  line-height: 70px;
+  padding-bottom: 5rem;
+  i {
+    font-family: "Playfair Display", sans-serif;
+  }
+}
+
+.values .blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.values .blocks .block {
+  border-top: solid 2px white;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .blockText {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .blockImage {
+    width: 380px;
+    height: 450px;
+    background: #314364;
+    align-self: flex-end;
+  }
+}
+
+@media (min-width: 780px) {
+  .values .blocks .block {
+    flex-direction: row;
+  }
+}
+
+.blockText {
+  .identifyer {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    font-size: 14px;
+    font-weight: 300;
+    text-decoration: underline;
+    padding-bottom: 7rem;
+  }
+  .subtitle {
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .title {
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 70px;
+  }
+  .bio {
+    font-size: 19px;
+    font-weight: 300;
+    padding-bottom: 1rem;
+    width: 70%;
+  }
+  button {
+    font-weight: 100;
+    padding: 0.5rem 1.5rem;
+    transition: 0.4s;
+  }
+  button:hover {
+    background: #ffffff3b;
+  }
+}
+
+.text {
+  text-align: center;
+}
+.cta .text h2 {
+  font-size: 82px;
+  text-align: center;
+  line-height: 80px;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  i {
+    font-family: "Playfair Display", sans-serif;
+  }
+}
+
+.cta .text span {
+  font-size: 62px;
+  text-align: center;
+  line-height: 80px;
+  padding-bottom: 5rem;
+  font-weight: 600;
+  i {
+    font-family: "Playfair Display", sans-serif;
+  }
+}
+
+.ctap {
+  padding-top: 5rem;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 300;
+  width: 80%;
+  justify-self: center;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 5rem;
+  h2 {
+    font-size: 52px;
+    font-weight: 600;
+    padding-bottom: 1rem;
+  }
+  .contactSub {
+    font-size: 19px;
+    font-weight: 300;
+    width: 50%;
+    justify-self: center;
+    padding-bottom: 5rem;
+  }
+}
+
+.contact-form {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  input {
+    border: none;
+    outline: none;
+    border-bottom: solid 2px white;
+    color: white;
+  }
+  label {
+    background: transparent;
+    font-size: 16px;
+    font-weight: 200;
+    color: white;
+  }
+  textarea {
+    border-top: none;
+    border-right: none;
+    color: white;
+    resize: vertical;
+    border-left: solid 2px white;
+    border-bottom: solid 2px white;
+  }
+  button {
+    width: 100px;
+    transition: 0.4s;
+  }
+  button:hover {
+    background: #ffffff3b;
+  }
+  .disclaimer {
+    text-align: center;
+    width: 100%;
+    padding-top: 1rem;
+  }
+}
