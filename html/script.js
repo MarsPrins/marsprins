@@ -56,3 +56,40 @@ document.addEventListener("mousemove", (e) => {
   glow.style.left = `${e.clientX}px`;
   glow.style.top = `${e.clientY}px`;
 });
+
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+
+async function handleSubmit(event) {
+  event.preventDefault();
+  status.textContent = "Sending…";
+
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch("https://formspree.io/f/xgolzzed", {
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (response.ok) {
+      status.textContent = "Contact successful!";
+    } else {
+      const result = await response.json();
+      if (result.errors) {
+        status.textContent = result.errors
+          .map((error) => error.message)
+          .join(", ");
+      } else {
+        status.textContent = "Oops! Something went wrong.";
+      }
+    }
+  } catch (error) {
+    status.textContent = "Network error. Please try again.";
+  }
+}
+
+form.addEventListener("submit", handleSubmit);

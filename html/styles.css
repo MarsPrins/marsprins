@@ -51,18 +51,19 @@ html {
   width: 100%;
 }
 
-.header .inside {
-  padding: 2rem;
+@media (min-width: 550px) {
+  .header .inside {
+    padding: 2rem;
+  }
 }
 
 .header .logo {
   height: 100px;
   z-index: 999;
+  justify-self: center;
 }
 
 .main .content {
-  display: flex;
-  justify-self: center;
   width: 100%;
 }
 .main {
@@ -174,9 +175,27 @@ html {
   font-size: 62px;
 }
 
-.content {
+.noHighlight,
+.highlight,
+.regular,
+.tagline .content {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  #typing-header .highlight {
+    font-size: 52px;
+  }
+  #typing-header .noHighlight {
+    font-size: 52px;
+  }
+  #typing-header .regular {
+    font-size: 32px;
+  }
+  #typing-header {
+    line-height: 60px;
+  }
 }
 
 @keyframes float {
@@ -312,6 +331,7 @@ html {
   border: 1px solid #ccc;
   font-size: 16px;
   outline: none;
+  font-family: "poppins", sans-serif;
 }
 
 .field label {
