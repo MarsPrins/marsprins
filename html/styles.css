@@ -600,6 +600,7 @@ button {
   font-weight: 300;
   width: 80%;
   justify-self: center;
+  margin: auto;
 }
 
 .contact {
@@ -620,6 +621,7 @@ button {
     width: 90%;
     justify-self: center;
     padding-bottom: 5rem;
+    margin: auto;
   }
 }
 
