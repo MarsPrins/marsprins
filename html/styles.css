@@ -617,7 +617,7 @@ button {
 
 @media (min-width: 780px) {
   .contactSub {
-    width: 50%;
+    width: 50% !important;
   }
 }
 
@@ -661,4 +661,19 @@ button {
     width: 100%;
     padding-top: 1rem;
   }
+}
+
+.footer {
+  width: 100vw;
+  position: relative;
+  padding-top: 10rem;
+}
+.copyright {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.site-content {
+  height: 5000px !important;
 }
