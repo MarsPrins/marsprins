@@ -527,7 +527,7 @@ button {
   .blockImage {
     display: flex;
     align-self: flex-end;
-    width: 300px;
+    width: 35%;
     /* height: 450px; */
     img {
       width: 100%;
