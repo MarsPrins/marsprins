@@ -51,6 +51,12 @@ html {
   width: 100%;
 }
 
+.header .inside {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
 @media (min-width: 550px) {
   .header .inside {
     padding: 2rem;
@@ -456,26 +462,15 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 2rem;
 
   .blockText {
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-  }
-
-  .blockImage {
-    width: 380px;
-    height: 450px;
-    background: #314364;
-    align-self: flex-end;
-  }
-}
-
-@media (min-width: 780px) {
-  .values .blocks .block {
-    flex-direction: row;
+    margin: auto;
   }
 }
 
@@ -514,6 +509,51 @@ button {
   }
 }
 
+@media (min-width: 780px) {
+  .values .blocks .block {
+    flex-direction: row;
+    gap: 0;
+  }
+  .blockText {
+    width: 60% !important;
+    display: flex;
+    align-self: flex-start;
+    margin: 0 !important;
+  }
+  .blockImage {
+    display: flex;
+    align-self: flex-end;
+    width: 300px;
+    /* height: 450px; */
+    img {
+      width: 100%;
+      height: 430px;
+      align-self: flex-end;
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .bio {
+    width: 100% !important;
+  }
+  .blockImage {
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+  }
+  img {
+    width: 90vw !important;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 780px) {
+  .block {
+    width: 90vw !important;
+  }
+}
+
 .text {
   text-align: center;
 }
@@ -536,6 +576,12 @@ button {
   font-weight: 600;
   i {
     font-family: "Playfair Display", sans-serif;
+  }
+}
+
+@media (max-width: 780px) {
+  .ctaSub {
+    line-height: 65px !important;
   }
 }
 
@@ -563,9 +609,15 @@ button {
   .contactSub {
     font-size: 19px;
     font-weight: 300;
-    width: 50%;
+    width: 90%;
     justify-self: center;
     padding-bottom: 5rem;
+  }
+}
+
+@media (min-width: 780px) {
+  .contactSub {
+    width: 50%;
   }
 }
 
@@ -580,6 +632,7 @@ button {
     outline: none;
     border-bottom: solid 2px white;
     color: white;
+    width: 90%;
   }
   label {
     background: transparent;
@@ -594,6 +647,7 @@ button {
     resize: vertical;
     border-left: solid 2px white;
     border-bottom: solid 2px white;
+    width: 90%;
   }
   button {
     width: 100px;
