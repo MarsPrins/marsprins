@@ -493,9 +493,9 @@ button {
     font-size: 16px;
   }
   .title {
-    font-size: 52px;
+    font-size: 42px;
     font-weight: 600;
-    line-height: 70px;
+    line-height: 50px;
   }
   .bio {
     font-size: 19px;
@@ -534,6 +534,10 @@ button {
       height: 430px;
       align-self: flex-end;
     }
+  }
+  .title {
+    font-size: 52px !important;
+    line-height: 70px !important;
   }
 }
 
