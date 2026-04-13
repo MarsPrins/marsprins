@@ -50,6 +50,20 @@
 //   delay: 1000,
 // });
 
+const dot = document.querySelector('.cursor-dot');
+const ring = document.querySelector('.cursor-ring');
+document.addEventListener('mousemove', e => {
+  dot.style.left = e.clientX - 4 + 'px';
+  dot.style.top = e.clientY - 4 + 'px';
+  ring.style.left = e.clientX + 'px';
+  ring.style.top = e.clientY + 'px';
+});
+// Scale up ring on hover over links/buttons
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.style.transform = 'translate(-50%,-50%) scale(1.8)');
+  el.addEventListener('mouseleave', () => ring.style.transform = 'translate(-50%,-50%) scale(1)');
+});
+
 const glow = document.getElementById("cursor-glow");
 
 document.addEventListener("mousemove", (e) => {
