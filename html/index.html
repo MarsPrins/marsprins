@@ -23,6 +23,18 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script>
+      const lenis = new Lenis({
+  duration: 0.8,
+  easing: (t) => 1 - Math.pow(1 - t, 3),
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+    </script>
 
     <meta
       name="description"
