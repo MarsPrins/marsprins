@@ -50,16 +50,7 @@
 //   delay: 1000,
 // });
 
-const lenis = new Lenis({
-  duration: 0.9,
-  easing: (t) => 1 - Math.pow(1 - t, 3),
-});
 
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
 
 const dot = document.querySelector('.cursor-dot');
 const ring = document.querySelector('.cursor-ring');
