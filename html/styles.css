@@ -1,9 +1,9 @@
 * { cursor: none; }
 a:hover {
-  cursor:none;
+  cursor:none !important;
 }
 button:hover {
-  cursor:none;
+  cursor:none !important;
 }
 body {
   background: #001840;
