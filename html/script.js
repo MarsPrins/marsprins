@@ -54,16 +54,37 @@
 
 const dot = document.querySelector('.cursor-dot');
 const ring = document.querySelector('.cursor-ring');
-document.addEventListener('mousemove', e => {
-  dot.style.left = e.clientX - 4 + 'px';
-  dot.style.top = e.clientY - 4 + 'px';
-  ring.style.left = e.clientX + 'px';
-  ring.style.top = e.clientY + 'px';
+
+let mouseX = 0, mouseY = 0;
+let ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 });
-// Scale up ring on hover over links/buttons
+
+function animateCursor() {
+  // Dot follows instantly
+  dot.style.left = mouseX + 'px';
+  dot.style.top = mouseY + 'px';
+
+  // Ring lerps slightly behind for smooth trail
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top = ringY + 'px';
+
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
 document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => ring.style.transform = 'translate(-50%,-50%) scale(1.8)');
-  el.addEventListener('mouseleave', () => ring.style.transform = 'translate(-50%,-50%) scale(1)');
+  el.addEventListener('mouseenter', () => {
+    ring.style.transform = 'translate(-50%, -50%) scale(1.8)';
+  });
+  el.addEventListener('mouseleave', () => {
+    ring.style.transform = 'translate(-50%, -50%) scale(1)';
+  });
 });
 
 const glow = document.getElementById("cursor-glow");
@@ -72,6 +93,7 @@ document.addEventListener("mousemove", (e) => {
   glow.style.left = `${e.clientX}px`;
   glow.style.top = `${e.clientY}px`;
 });
+
 
 const form = document.getElementById("contact-form");
 const status = document.getElementById("form-status");
