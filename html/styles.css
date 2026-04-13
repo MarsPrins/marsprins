@@ -1,3 +1,4 @@
+* { cursor: none; }
 body {
   background: #001840;
   margin: 0;
@@ -21,11 +22,10 @@ body {
   filter: blur(150px);
 }
 
-* { cursor: none; }
 
 .cursor-dot {
   width: 8px; height: 8px;
-  background: #314364; /* your brand colour */
+  background: #ffff; /* your brand colour */
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -34,7 +34,7 @@ body {
 }
 .cursor-ring {
   width: 36px; height: 36px;
-  border: 1.5px solid #314364;
+  border: 1.5px solid #5c73a1;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
