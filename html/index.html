@@ -23,19 +23,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-    <script>
-      const lenis = new Lenis({
-  duration: 0.9,
-  easing: (t) => 1 - Math.pow(1 - t, 3),
-});
 
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-    </script>
     <meta
       name="description"
       content="Creative Conscious Web design for people who want Freedom, Integration, Oppurtunity, and Potential."
