@@ -52,40 +52,40 @@
 
 
 
-const dot = document.querySelector('.cursor-dot');
-const ring = document.querySelector('.cursor-ring');
+// const dot = document.querySelector('.cursor-dot');
+// const ring = document.querySelector('.cursor-ring');
 
-let mouseX = 0, mouseY = 0;
-let ringX = 0, ringY = 0;
+// let mouseX = 0, mouseY = 0;
+// let ringX = 0, ringY = 0;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
+// document.addEventListener('mousemove', (e) => {
+//   mouseX = e.clientX;
+//   mouseY = e.clientY;
+// });
 
-function animateCursor() {
-  // Dot follows instantly
-  dot.style.left = mouseX + 'px';
-  dot.style.top = mouseY + 'px';
+// function animateCursor() {
+//   // Dot follows instantly
+//   dot.style.left = mouseX + 'px';
+//   dot.style.top = mouseY + 'px';
 
-  // Ring lerps slightly behind for smooth trail
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  ring.style.left = ringX + 'px';
-  ring.style.top = ringY + 'px';
+//   // Ring lerps slightly behind for smooth trail
+//   ringX += (mouseX - ringX) * 0.12;
+//   ringY += (mouseY - ringY) * 0.12;
+//   ring.style.left = ringX + 'px';
+//   ring.style.top = ringY + 'px';
 
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
+//   requestAnimationFrame(animateCursor);
+// }
+// animateCursor();
 
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    ring.style.transform = 'translate(-50%, -50%) scale(1.8)';
-  });
-  el.addEventListener('mouseleave', () => {
-    ring.style.transform = 'translate(-50%, -50%) scale(1)';
-  });
-});
+// document.querySelectorAll('a, button').forEach(el => {
+//   el.addEventListener('mouseenter', () => {
+//     ring.style.transform = 'translate(-50%, -50%) scale(1.8)';
+//   });
+//   el.addEventListener('mouseleave', () => {
+//     ring.style.transform = 'translate(-50%, -50%) scale(1)';
+//   });
+// });
 
 const glow = document.getElementById("cursor-glow");
 
