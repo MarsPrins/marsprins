@@ -16,7 +16,7 @@ body {
   border-radius: 50%;
   pointer-events: none;
   z-index: 0; /* above bg, below content */
-  background: #455b85;
+  background: #5c73a1;
   transform: translate(-50%, -50%);
   filter: blur(150px);
 }
