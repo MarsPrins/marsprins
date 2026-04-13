@@ -408,11 +408,13 @@ button {
     gap: 5rem;
   }
   .offersInfo p {
-    width: 50%;
+    width: 70%;
   }
   .offersInfo button {
     padding-top: 0;
   }
+  .title {
+    width:70%;
 }
 
 .buttonToLeft {
