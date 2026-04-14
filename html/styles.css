@@ -178,7 +178,7 @@ html {
 /* Wrapper must be centered on page */
 .typing-wrapper {
   display: flex;
-  justify-content: center; /* center horizontally */
+  justify-content: start; /* center horizontally */
   align-items: center; /* center vertically */
   height: 100vh; /* full viewport height */
   width: 100vw;
@@ -199,8 +199,8 @@ html {
   display: inline-flex; /* shrink to fit content */
   flex-direction: column; /* for stacked spans if needed */
   line-height: 80px;
-  text-align: center; /* IMPORTANT: typing starts from left */
-  width: 400px;
+  text-align: start; /* IMPORTANT: typing starts from left */
+  width: 500px;
   height: 300px;
 }
 
