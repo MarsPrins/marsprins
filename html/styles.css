@@ -207,6 +207,11 @@ html {
   height: 300px;
 }
 
+#typing-header .img {
+  width: 200px;
+  justify-self: end;
+}
+
 /* Highlighted word */
 #typing-header .highlight {
   /* font-family: "Playfair Display", sans-serif;
