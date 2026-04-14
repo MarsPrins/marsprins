@@ -347,9 +347,11 @@ html {
 }
 .links .left {
   justify-self: start;
+  justify-content: start;
 }
 .links .right {
   justify-self: end;
+  justify-content: end;
 }
 .links .left button {
   border: none;
