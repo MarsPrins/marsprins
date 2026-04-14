@@ -341,7 +341,6 @@ html {
   justify-content: space-between;
   position: relative;
   bottom: 12rem;
-  padding: 0 2rem;
   animation: hero-fade 0.8s ease forwards;
   animation-delay: 1s; /* float starts after fade */
   opacity: 0; /* initial state for fade */
