@@ -202,7 +202,7 @@ html {
   /* center the container but typing starts from left */
   display: inline-flex; /* shrink to fit content */
   flex-direction: column; /* for stacked spans if needed */
-  line-height: 80px;
+  line-height: 100px;
   text-align: start; /* IMPORTANT: typing starts from left */
   width: 7000px;
   height: 300px;
