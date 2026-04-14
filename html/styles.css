@@ -217,16 +217,16 @@ html {
 #typing-header .noHighlight {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-style: italic;
+  font-style: normal;
   font-size: 82px;
 }
 
 /* Regular word */
 #typing-header .regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
   font-style: normal;
-  padding: 0;
-  margin: 0;
-  font-size: 62px;
+  font-size: 82px;
 }
 
 .noHighlight,
