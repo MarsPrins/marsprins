@@ -181,11 +181,13 @@ html {
   justify-content: start; /* center horizontally */
   align-items: center; /* center vertically */
   height: 100vh; /* full viewport height */
-  width: 100vw;
+  width: 100%;
   max-width: 1224px;
   animation: hero-fade 0.8s ease forwards;
   animation-delay: 0.8s; /* float starts after fade */
   opacity: 0; /* initial state for fade */
+  margin:auto;
+  justify-self:center;
 }
 
 /* Typing header */
@@ -211,7 +213,7 @@ html {
   */
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-style: italic;
+  font-style: normal;
   font-size: 82px;
   padding-bottom: 10px;
 }
