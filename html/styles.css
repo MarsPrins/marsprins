@@ -204,13 +204,8 @@ html {
   flex-direction: column; /* for stacked spans if needed */
   line-height: 80px;
   text-align: start; /* IMPORTANT: typing starts from left */
-  width: 500px;
+  width: 7000px;
   height: 300px;
-}
-
-#typing-header .logoBg {
-  opacity: 0.2;
-  z-index:-1;
 }
 
 #typing-header .logo {
