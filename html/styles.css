@@ -111,7 +111,7 @@ html {
   }
 }
 
-.header .logo {
+.logo {
   height: 100px;
   z-index: 999;
   justify-self: center;
