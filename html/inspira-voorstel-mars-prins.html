@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Een voorstel voor Inspira Development — Mars Prins</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #0b0b09;
+      --surface:     #111110;
+      --border:      rgba(255,255,255,0.07);
+      --text:        #e8e2d8;
+      --muted:       #7a746c;
+      --faint:       #3a3630;
+      --gold:        #c4a265;
+      --gold-dim:    rgba(196,162,101,0.12);
+      --red:         #c46565;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --text-xs:   clamp(0.7rem,  0.65rem + 0.25vw, 0.8rem);
+      --text-sm:   clamp(0.85rem, 0.8rem  + 0.25vw, 0.95rem);
+      --text-base: clamp(1rem,    0.95rem + 0.25vw, 1.1rem);
+      --text-lg:   clamp(1.2rem,  1rem    + 0.75vw, 1.6rem);
+      --text-xl:   clamp(1.6rem,  1.2rem  + 1.5vw,  2.5rem);
+      --text-2xl:  clamp(2.2rem,  1.2rem  + 3vw,    4rem);
+      --text-hero: clamp(2.8rem,  1rem    + 5.5vw,  6.5rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      font-size: var(--text-base);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: rgba(196,162,101,0.2); }
+
+    /* Scroll reveals */
+    .reveal { opacity: 1; }
+    @supports (animation-timeline: scroll()) {
+      .reveal {
+        opacity: 0;
+        animation: reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 65%;
+      }
+      .d1 { animation-delay: 0.08s; }
+      .d2 { animation-delay: 0.16s; }
+    }
+    @keyframes reveal { to { opacity: 1; } }
+
+    /* Layout */
+    .wrap {
+      max-width: 860px;
+      margin-inline: auto;
+      padding-inline: clamp(1.5rem, 6vw, 3rem);
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .topbar__from {
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .topbar__from strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .topbar__date {
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      color: var(--faint);
+    }
+
+    /* ── Hero / Intro ── */
+    .hero {
+      padding-top: clamp(4rem, 10vw, 7rem);
+      padding-bottom: clamp(3rem, 7vw, 5rem);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero__label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .hero__label-line { width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+    .hero__label-text {
+      font-size: var(--text-xs);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hero__to {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem;
+    }
+    .hero__to span { color: var(--text); }
+    .hero__headline {
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+    .hero__headline em { font-style: italic; color: var(--gold); }
+    .hero__sub {
+      font-size: var(--text-base);
+      color: var(--muted);
+      max-width: 54ch;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .hero__sub strong { color: var(--text); font-weight: 400; }
+
+    /* ── Section ── */
+    .section {
+      padding-block: clamp(3rem, 7vw, 5.5rem);
+      border-bottom: 1px solid var(--border);
+    }
+    .section__num {
+      font-size: var(--text-xs);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 0.75rem;
+    }
+    .section__title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+    .section__title em { font-style: italic; color: var(--gold); }
+    .section__body {
+      font-size: var(--text-base);
+      color: var(--muted);
+      line-height: 1.85;
+      font-weight: 300;
+      max-width: 58ch;
+    }
+    .section__body strong { color: var(--text); font-weight: 400; }
+    .section__body + .section__body { margin-top: 1.25rem; }
+
+    /* ── Problem list (what's wrong) ── */
+    .issues {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .issue {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 180ms ease;
+    }
+    .issue:last-child { border-bottom: none; }
+    .issue:hover { background: rgba(255,255,255,0.02); }
+    .issue__icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(196,101,101,0.15);
+      border: 1px solid rgba(196,101,101,0.3);
+      flex-shrink: 0;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .issue__icon svg { color: var(--red); }
+    .issue__text {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .issue__text strong { color: var(--text); font-weight: 400; display: block; margin-bottom: 2px; }
+
+    /* ── What I offer ── */
+    .offer-grid {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .offer-item {
+      background: var(--surface);
+      padding: 1.75rem;
+      transition: background 180ms ease;
+    }
+    .offer-item:hover { background: #161512; }
+    .offer-item__num {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.35;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .offer-item__title {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+    .offer-item__body {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── Side-by-side compare ── */
+    .compare {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .compare__col { background: var(--surface); padding: 1.75rem; }
+    .compare__col--good { background: rgba(196,162,101,0.05); }
+    .compare__col-label {
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+    .compare__col--bad .compare__col-label  { color: var(--red);  }
+    .compare__col--good .compare__col-label { color: var(--gold); }
+    .compare__list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .compare__row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      font-size: var(--text-sm);
+      color: var(--muted);
+      font-weight: 300;
+    }
+    .compare__row::before {
+      content: '–';
+      color: var(--faint);
+      flex-shrink: 0;
+    }
+    .compare__col--good .compare__row::before { content: '✓'; color: var(--gold); }
+
+    /* ── Investment ── */
+    .investment-box {
+      margin-top: 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .investment-box__header {
+      background: var(--gold-dim);
+      border-bottom: 1px solid rgba(196,162,101,0.15);
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .investment-box__label {
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .investment-box__price {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 300;
+      color: var(--gold);
+    }
+    .investment-box__body {
+      padding: 1.75rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .investment-item__label {
+      font-size: var(--text-xs);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .investment-item__value {
+      font-size: var(--text-sm);
+      color: var(--text);
+      font-weight: 300;
+    }
+    .investment-box__note {
+      padding: 1rem 1.75rem;
+      border-top: 1px solid var(--border);
+      font-size: var(--text-xs);
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding-block: clamp(4rem, 10vw, 7rem);
+      text-align: center;
+    }
+    .cta__eyebrow {
+      font-size: var(--text-xs);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .cta__headline {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+    .cta__sub {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      max-width: 44ch;
+      margin-inline: auto;
+      line-height: 1.8;
+    }
+    .cta__buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.875rem 2rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 180ms ease;
+      border: none;
+    }
+    .btn--primary { background: var(--gold); color: #0b0b09; }
+    .btn--primary:hover { background: #d9b87a; transform: translateY(-1px); }
+    .btn--outline {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn--outline:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+    .cta__signature {
+      margin-top: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .cta__sig-line { width: 1px; height: 40px; background: var(--border); }
+    .cta__sig-name {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .cta__sig-url {
+      font-size: var(--text-xs);
+      letter-spacing: 0.15em;
+      color: var(--faint);
+    }
+    .cta__sig-url a { transition: color 180ms ease; }
+    .cta__sig-url a:hover { color: var(--gold); }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer__note {
+      font-size: var(--text-xs);
+      color: var(--faint);
+    }
+    .footer__link {
+      font-size: var(--text-xs);
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      transition: opacity 180ms ease;
+    }
+    .footer__link:hover { opacity: 0.7; }
+
+    @media (max-width: 600px) {
+      .offer-grid,
+      .compare,
+      .investment-box__body { grid-template-columns: 1fr; }
+      .investment-box__header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <p class="topbar__from">Een voorstel van <strong>Mars Prins</strong></p>
+      <p class="topbar__date">April 2026</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── Hero ───────────────────────────────────── -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero__label">
+          <div class="hero__label-line"></div>
+          <span class="hero__label-text">Persoonlijk voorstel</span>
+        </div>
+        <p class="hero__to">Aan: <span>Inspira Development, Amsterdam</span></p>
+        <h1 class="hero__headline">
+          Jullie werk<br>verdient een site<br>die <em>klopt</em>
+        </h1>
+        <p class="hero__sub">
+          Inspira Development ontwikkelt <strong>uitzonderlijke gebouwen</strong> in Amsterdam. Maar jullie website vertelt dat verhaal niet. Dit voorstel laat zien waarom dat verandert, en hoe ik dat doe.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 01 Wat ik zie ───────────────────────────── -->
+    <section class="section">
+      <div class="wrap">
+        <p class="section__num reveal">01 — De huidige situatie</p>
+        <h2 class="section__title reveal">De site staat<br><em>in de weg</em></h2>
+        <p class="section__body reveal">
+          Ik heb jullie huidige website bekeken. Het is duidelijk dat er aan gewerkt is — maar hij is <strong>onaf, en dat voelt de bezoeker meteen</strong>. Voor een projectontwikkelaar die gebouwen neerzet van 21.000 m² is een website die niet klopt geen klein detail. Het is de eerste indruk.
+        </p>
+        <p class="section__body reveal d1">
+          Een potentiële partner, investeerder of opdrachtgever beoordeelt jullie binnen <strong>acht seconden</strong>. Wat zien ze nu?
+        </p>
+
+        <div class="issues reveal d2">
+          <div class="issue">
+            <div class="issue__icon">
+              <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="issue__text">
+              <strong>Onafgemaakte pagina's</strong>
+              Meerdere secties ogen als placeholders — lege blokken, ontbrekende content, losse eindjes.
+            </div>
+          </div>
+          <div class="issue">
+            <div class="issue__icon">
+              <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="issue__text">
+              <strong>Geen duidelijke identiteit</strong>
+              Het ontwerp communiceer niet wie Inspira is. Er is geen visuele taal die past bij de schaal en kwaliteit van jullie projecten.
+            </div>
+          </div>
+          <div class="issue">
+            <div class="issue__icon">
+              <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="issue__text">
+              <strong>Projecten komen niet tot hun recht</strong>
+              VMK, KHG, Weldam, El Graus — dat zijn sterke projecten. Ze worden nu nauwelijks gepresenteerd.
+            </div>
+          </div>
+          <div class="issue">
+            <div class="issue__icon">
+              <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="issue__text">
+              <strong>Geen duidelijke call-to-action</strong>
+              Wat moet een bezoeker doen? Contact opnemen? Samenwerken? De huidige site geeft geen richting.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 02 Wat ik doe ───────────────────────────── -->
+    <section class="section">
+      <div class="wrap">
+        <p class="section__num reveal">02 — Wat ik voor jullie maak</p>
+        <h2 class="section__title reveal">Een site die jullie<br><em>waardig is</em></h2>
+        <p class="section__body reveal">
+          Ik bouw <strong>geen templates</strong>. Ik ontwerp en bouw websites van nul — volledig afgestemd op wie jullie zijn, wat jullie doen en wie jullie willen bereiken. Elk detail is een bewuste keuze.
+        </p>
+
+        <div class="offer-grid reveal d1">
+          <div class="offer-item">
+            <div class="offer-item__num">01</div>
+            <p class="offer-item__title">Ontwerp op maat</p>
+            <p class="offer-item__body">Geen WordPress-thema, geen Squarespace. Een ontwerp dat start bij jullie identiteit en nergens anders.</p>
+          </div>
+          <div class="offer-item">
+            <div class="offer-item__num">02</div>
+            <p class="offer-item__title">Projectenpresentatie</p>
+            <p class="offer-item__body">Jullie projecten als het hart van de site — met beeld, context en de allure die ze verdienen.</p>
+          </div>
+          <div class="offer-item">
+            <div class="offer-item__num">03</div>
+            <p class="offer-item__title">Volledig technisch</p>
+            <p class="offer-item__body">Van code tot hosting, van snelheid tot SEO. Geen half werk — alles klopt en werkt.</p>
+          </div>
+          <div class="offer-item">
+            <div class="offer-item__num">04</div>
+            <p class="offer-item__title">Jullie, end-to-end</p>
+            <p class="offer-item__body">Ik werk rechtstreeks met jullie samen. Geen tussenpartijen, geen communicatieruis. Eén aanspreekpunt, van eerste schets tot live.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 03 Verschil ────────────────────────────── -->
+    <section class="section">
+      <div class="wrap">
+        <p class="section__num reveal">03 — Voor en na</p>
+        <h2 class="section__title reveal">Het <em>verschil</em><br>in één oogopslag</h2>
+
+        <div class="compare reveal d1">
+          <div class="compare__col compare__col--bad">
+            <p class="compare__col-label">Nu</p>
+            <ul class="compare__list">
+              <li class="compare__row">Onafgemaakt en gefragmenteerd</li>
+              <li class="compare__row">Geen herkenbare visuele identiteit</li>
+              <li class="compare__row">Projecten slecht gepresenteerd</li>
+              <li class="compare__row">Geen duidelijke richting voor bezoekers</li>
+              <li class="compare__row">Schaadt de geloofwaardigheid</li>
+            </ul>
+          </div>
+          <div class="compare__col compare__col--good">
+            <p class="compare__col-label">Na</p>
+            <ul class="compare__list">
+              <li class="compare__row">Af, strak en doordacht</li>
+              <li class="compare__row">Visuele taal die past bij de schaal</li>
+              <li class="compare__row">Projecten als visueel centerpiece</li>
+              <li class="compare__row">Heldere flow naar contact</li>
+              <li class="compare__row">Versterkt vertrouwen en autoriteit</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 04 Investering ─────────────────────────── -->
+    <section class="section">
+      <div class="wrap">
+        <p class="section__num reveal">04 — Investering</p>
+        <h2 class="section__title reveal">Eerlijk en<br><em>transparant</em></h2>
+        <p class="section__body reveal">
+          Mijn tarieven zijn afgestemd op de <strong>scope en ambitie van het project</strong>. Voor Inspira denk ik aan het volgende als startpunt — altijd in goed overleg.
+        </p>
+
+        <div class="investment-box reveal d1">
+          <div class="investment-box__header">
+            <span class="investment-box__label">Geschatte investering</span>
+            <span class="investment-box__price">€ 2.950 — € 4.950</span>
+          </div>
+          <div class="investment-box__body">
+            <div class="investment-item">
+              <p class="investment-item__label">Wat is inbegrepen</p>
+              <p class="investment-item__value">Volledig custom ontwerp, development, alle pagina's, projecten-sectie, contactformulier, SEO-basis, mobiel geoptimaliseerd</p>
+            </div>
+            <div class="investment-item">
+              <p class="investment-item__label">Doorlooptijd</p>
+              <p class="investment-item__value">3 tot 5 weken na akkoord en aanlevering van materialen</p>
+            </div>
+            <div class="investment-item">
+              <p class="investment-item__label">Betalingsstructuur</p>
+              <p class="investment-item__value">50% bij start, 50% bij oplevering</p>
+            </div>
+            <div class="investment-item">
+              <p class="investment-item__label">Na oplevering</p>
+              <p class="investment-item__value">30 dagen support inbegrepen. Nazorg en updates mogelijk op aanvraag.</p>
+            </div>
+          </div>
+          <p class="investment-box__note">
+            Geen verborgen kosten. Prijs is definitief na eerste gesprek en opdrachtomschrijving. Complexe uitbreidingen worden apart geoffreerd.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ────────────────────────────────────── -->
+    <section class="cta-section">
+      <div class="wrap">
+        <p class="cta__eyebrow reveal">Klaar om te beginnen?</p>
+        <h2 class="cta__headline reveal">
+          Laten we een gesprek<br>inplannen
+        </h2>
+        <p class="cta__sub reveal">
+          Geen verplichtingen, geen verkooppraatje. Gewoon een eerlijk gesprek over wat jullie nodig hebben en of ik de juiste persoon ben om het te maken.
+        </p>
+        <div class="cta__buttons reveal d1">
+          <a href="mailto:contact@marsprins.nl?subject=Voorstel%20Inspira%20Development" class="btn btn--primary">
+            Stuur een bericht
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://marsprins.nl" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
+            Bekijk mijn werk
+          </a>
+        </div>
+
+        <div class="cta__signature reveal d2">
+          <div class="cta__sig-line"></div>
+          <p class="cta__sig-name">Mars Prins</p>
+          <p class="cta__sig-url"><a href="https://marsprins.nl" target="_blank" rel="noopener noreferrer">marsprins.nl</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p class="footer__note">Persoonlijk voorstel — uitsluitend bestemd voor Inspira Development</p>
+      <a href="https://marsprins.nl" target="_blank" rel="noopener noreferrer" class="footer__link">marsprins.nl →</a>
+    </div>
+  </footer>
+
+</body>
+</html>
