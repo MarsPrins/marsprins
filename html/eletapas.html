@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Restaurant eLe in Utrecht: authentieke Spaanse tapas aan de Oudegracht. Reserveren, menu, reviews en contact." />
+  <meta name="keywords" content="Restaurant eLe, tapas Utrecht, Spaans restaurant Utrecht, Oudegracht Utrecht, restaurant eLe Utrecht" />
+  <meta name="author" content="Restaurant eLe" />
+  <meta property="og:title" content="Restaurant eLe Utrecht | Authentieke Spaanse tapas" />
+  <meta property="og:description" content="Authentieke tapas, warme sfeer en live muziek aan de Oudegracht in Utrecht." />
+  <meta property="og:type" content="website" />
+  <title>Restaurant eLe | Spaans tapasrestaurant in Utrecht</title>
+  <style>
+    :root{
+      --bg:#0f1115;
+      --card:#151922;
+      --card2:#1b2030;
+      --text:#f5f7fb;
+      --muted:#b8c0d4;
+      --accent:#d6a85c;
+      --accent2:#6fd3b5;
+      --border:rgba(255,255,255,.08);
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --max:1180px;
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(214,168,92,.16), transparent 26%),
+        radial-gradient(circle at top right, rgba(111,211,181,.12), transparent 22%),
+        linear-gradient(180deg, #0c0f14 0%, #11151d 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(100% - 32px, var(--max)); margin-inline:auto}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(18px);
+      background: rgba(12,15,20,.72);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      min-height:76px; gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px}
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      background:linear-gradient(135deg, var(--accent), #f1d28a);
+      color:#161616; display:grid; place-items:center; font-weight:800;
+      box-shadow:0 12px 30px rgba(214,168,92,.28);
+    }
+    .nav-links{display:flex; gap:22px; flex-wrap:wrap}
+    .nav-links a{color:var(--muted); font-size:.96rem}
+    .nav-links a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 20px; border-radius:999px; font-weight:700;
+      border:1px solid var(--border); background:rgba(255,255,255,.04);
+      transition:.2s ease; box-shadow:none;
+    }
+    .btn.primary{background:linear-gradient(135deg, var(--accent), #f0c97d); color:#141414; border:none}
+    .btn:hover{transform:translateY(-1px)}
+    .hero{
+      padding:72px 0 34px;
+    }
+    .hero-grid{
+      display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:stretch;
+    }
+    .hero-copy,.hero-side,.section-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .hero-copy{padding:42px}
+    .eyebrow{
+      display:inline-flex; gap:10px; align-items:center;
+      color:var(--accent2); font-weight:700; font-size:.92rem;
+      text-transform:uppercase; letter-spacing:.12em;
+    }
+    h1{
+      margin:.5rem 0 1rem;
+      font-size:clamp(2.4rem, 4vw, 4.8rem);
+      line-height:1.02;
+    }
+    .lead{font-size:1.08rem; color:var(--muted); max-width:58ch}
+    .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:28px}
+    .meta{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px;
+    }
+    .meta > div{
+      background:rgba(255,255,255,.03); border:1px solid var(--border);
+      border-radius:18px; padding:16px;
+    }
+    .meta strong{display:block; font-size:1.08rem}
+    .meta span{color:var(--muted); font-size:.92rem}
+    .hero-side{
+      padding:28px; display:flex; flex-direction:column; justify-content:space-between;
+      background:
+        linear-gradient(180deg, rgba(214,168,92,.12), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+    }
+    .rating{
+      display:flex; gap:12px; align-items:center; margin-bottom:18px;
+      padding:14px 16px; border-radius:18px; background:rgba(255,255,255,.04); border:1px solid var(--border);
+    }
+    .stars{color:#ffd36a; font-size:1.1rem; letter-spacing:.14em}
+    .cover{
+      border-radius:22px; min-height:280px;
+      background:
+        linear-gradient(180deg, rgba(15,17,21,.1), rgba(15,17,21,.65)),
+        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80') center/cover;
+      border:1px solid var(--border);
+      display:flex; align-items:flex-end; padding:20px;
+    }
+    .cover p{margin:0; color:#fff; max-width:26ch; font-weight:600}
+    section{padding:26px 0}
+    .section-card{padding:30px}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    h2{font-size:clamp(1.5rem, 2vw, 2.3rem); margin:0 0 14px}
+    p{margin:0 0 14px}
+    .muted{color:var(--muted)}
+    .feature{
+      background:rgba(255,255,255,.03); border:1px solid var(--border);
+      border-radius:18px; padding:18px;
+    }
+    .feature h3{margin:0 0 8px; font-size:1.03rem}
+    .testimonial{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--border); border-radius:18px; padding:20px;
+      height:100%;
+    }
+    .testimonial .name{font-weight:700; margin-top:12px}
+    .testimonial .score{color:var(--accent); font-weight:700}
+    .contact-grid{display:grid; grid-template-columns: .9fr 1.1fr; gap:24px}
+    .info-list{display:grid; gap:14px}
+    .info-item{
+      padding:16px 18px; border-radius:16px; background:rgba(255,255,255,.03);
+      border:1px solid var(--border);
+    }
+    form{display:grid; gap:14px}
+    input, textarea{
+      width:100%; padding:14px 16px; border-radius:14px;
+      border:1px solid var(--border); background:#0d1118; color:var(--text);
+      font:inherit;
+    }
+    textarea{min-height:140px; resize:vertical}
+    .footer{
+      margin-top:26px; padding:30px 0 42px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+    }
+    .footer-grid{
+      display:grid; grid-template-columns:1.2fr .8fr .8fr; gap:20px;
+    }
+    .footer a{color:var(--muted)}
+    .footer a:hover{color:var(--text)}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px; background:rgba(111,211,181,.12);
+      border:1px solid rgba(111,211,181,.24); color:#bff3e2; font-size:.92rem;
+    }
+    .small{font-size:.93rem}
+    @media (max-width: 920px){
+      .hero-grid,.grid-2,.grid-3,.contact-grid,.footer-grid{grid-template-columns:1fr}
+      .meta{grid-template-columns:1fr}
+      .nav-inner{flex-wrap:wrap; padding:12px 0}
+      .nav-links{gap:14px}
+      .hero{padding-top:34px}
+      .hero-copy{padding:28px}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand" aria-label="Restaurant eLe">
+        <span class="logo">e</span>
+        <span>Restaurant eLe</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigatie">
+        <a href="#over-ons">Over ons</a>
+        <a href="#ervaring">Ervaring</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn primary" href="tel:+31302312165">Bel direct</a>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Spaans tapasrestaurant in Utrecht</div>
+          <h1>Restaurant eLe<br/>Authentieke tapas aan de Oudegracht</h1>
+          <p class="lead">
+            Restaurant eLe is een sfeervol restaurant in Utrecht waar Spaanse tapas, warme gastvrijheid en een levendige ambiance samenkomen.
+            Perfect voor een ontspannen diner, een avond uit of een bijzondere borrel aan het water.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">Reserveer of neem contact op</a>
+            <a class="btn" href="#testimonials">Bekijk reviews</a>
+          </div>
+          <div class="meta" aria-label="Belangrijkste gegevens">
+            <div><strong>4.2 / 5</strong><span>Google beoordeling</span></div>
+            <div><strong>261</strong><span>Google reviews</span></div>
+            <div><strong>Oudegracht 211</strong><span>Utrecht</span></div>
+          </div>
+        </div>
+        <aside class="hero-side">
+          <div>
+            <div class="rating">
+              <div>
+                <div class="score"><strong>4.2</strong>/5</div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <div class="small muted">Gebaseerd op 261 beoordelingen</div>
+            </div>
+            <div class="cover" role="img" aria-label="Sfeervol restaurantinterieur">
+              <p>Een warme, moderne setting voor tapas, gesprekken en live muziek.</p>
+            </div>
+          </div>
+          <div style="margin-top:18px">
+            <span class="tag">SEO geoptimaliseerd voor “tapas Utrecht”</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="over-ons">
+      <div class="section-card">
+        <h2>Over Restaurant eLe</h2>
+        <div class="grid-2">
+          <div>
+            <p>
+              Restaurant eLe is een Spaans tapasrestaurant in het hart van Utrecht, gelegen aan de sfeervolle Oudegracht.
+              De zaak staat bekend om haar gezellige sfeer, authentieke tapas en karaktervolle beleving onder de Dom.
+            </p>
+            <p>
+              Op basis van publieke informatie en reviews combineert eLe een warme gastvrijheid met een informele, levendige avond uit.
+              Bezoekers noemen vaak de locatie op kanaalniveau, de Spaanse muziek en de gezellige ambiance.
+            </p>
+          </div>
+          <div class="feature">
+            <h3>Waarom gasten eLe kiezen</h3>
+            <p class="muted">• Authentieke Spaanse tapas</p>
+            <p class="muted">• Centrale locatie in Utrecht</p>
+            <p class="muted">• Gezellige, levendige sfeer</p>
+            <p class="muted">• Regelmatig live muziek</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ervaring">
+      <div class="section-card">
+        <h2>Wat u kunt verwachten</h2>
+        <div class="grid-3">
+          <div class="feature">
+            <h3>Tapas & food</h3>
+            <p class="muted">Spaanse tapas, smaakvolle gerechten en een menu dat uitnodigt om samen te delen.</p>
+          </div>
+          <div class="feature">
+            <h3>Sfeer & beleving</h3>
+            <p class="muted">Een charmante locatie aan de Oudegracht met een warme, authentieke uitstraling.</p>
+          </div>
+          <div class="feature">
+            <h3>Avond uit</h3>
+            <p class="muted">Een restaurant dat geschikt is voor een gezellige avond met live muziek en karakter.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="section-card">
+        <h2>Google reviews</h2>
+        <p class="muted">Een selectie van positieve ervaringen van gasten.</p>
+        <div class="grid-3">
+          <article class="testimonial">
+            <div class="score">★★★★★ 5/5</div>
+            <p>“Excellent Spanish restaurant in Utrecht, right by the Oudegracht. The food is delicious and the atmosphere is charming...”</p>
+            <div class="name">Daniel Santiago</div>
+          </article>
+          <article class="testimonial">
+            <div class="score">★★★★★ 5/5</div>
+            <p>“...just go there... it's a fun night out with some decent tapas and other main dishes, while there will be live music on offer.”</p>
+            <div class="name">Tom Jacob</div>
+          </article>
+          <article class="testimonial">
+            <div class="score">★★★★★ 5/5</div>
+            <p>“Amazing restaurant... there was a group of Spanish-speaking singers... Altogether it was a perfect and very authentic night.”</p>
+            <div class="name">Jota Jot</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-card">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+          <div class="info-list">
+            <div class="info-item">
+              <strong>Adres</strong><br/>
+              Oudegracht 211, Utrecht
+            </div>
+            <div class="info-item">
+              <strong>Telefoon</strong><br/>
+              <a href="tel:+31302312165">030 231 2165</a>
+            </div>
+            <div class="info-item">
+              <strong>Online aanwezigheid</strong><br/>
+              Nog niet opgezocht. Voeg links toe zodra beschikbaar.
+            </div>
+          </div>
+          <div>
+            <form>
+              <input type="text" name="name" placeholder="Uw naam" aria-label="Uw naam" />
+              <input type="email" name="email" placeholder="Uw e-mailadres" aria-label="Uw e-mailadres" />
+              <input type="tel" name="phone" placeholder="Telefoonnummer" aria-label="Telefoonnummer" />
+              <textarea name="message" placeholder="Uw bericht of reserveringsaanvraag" aria-label="Uw bericht"></textarea>
+              <button class="btn primary" type="submit">Verstuur bericht</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px"><span class="logo">e</span><span>Restaurant eLe</span></div>
+        <p class="small">Spaans tapasrestaurant in Utrecht, gespecialiseerd in sfeer, gastvrijheid en authentieke beleving aan de Oudegracht.</p>
+      </div>
+      <div>
+        <strong style="color:var(--text)">Volg ons</strong>
+        <p class="small">
+          <a href="#" rel="nofollow">Instagram</a><br/>
+          <a href="#" rel="nofollow">Facebook</a><br/>
+          <a href="#" rel="nofollow">TikTok</a>
+        </p>
+      </div>
+      <div>
+        <strong style="color:var(--text)">Reviews</strong>
+        <p class="small">
+          <a href="#" rel="nofollow">Google Reviews</a><br/>
+          <a href="#" rel="nofollow">Tripadvisor</a><br/>
+          <a href="#" rel="nofollow">Yelp</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
